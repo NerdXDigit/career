@@ -9,6 +9,7 @@ use App\Models\Condition;
 use App\Models\Souscription;
 use App\Models\Fichier;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -209,6 +210,78 @@ class AdminController extends Controller
         return redirect('/espace/admin/listoffer')->with('status',"La condition a été mise a jour avec succès");
     }
 
+    public function demandeurs()
+    {
+        $demandeurs = User::where('type', 0)->get();
+        return view('admin.demandeurs')->with('demandeurs', $demandeurs);
+    }
+    public function desactiver($id)
+    {
+        $user = User::find($id);
+        $user->actif = 0;
+        $user->update();
+        return back()->with('status',"Le compte a été désactiver avec succès");
+    }
+    public function offreurs()
+    {
+        $offreurs = User::where('type', 1)->get();
+        return view('admin.offreurs')->with('offreurs', $offreurs);
+    }
+    public function comptesdesactive()
+    {
+        $comptesdesactive = User::where('actif', 0)->get();
+        return view('admin.comptesdesactive')->with('comptesdesactive', $comptesdesactive);
+    }
 
-    
+    public function offres($id)
+    {
+        $offres = Offre::where('user_id', $id)
+                            ->get();
+        $user = User::where('id', $id)
+                            ->first();
+
+        return view('admin.offres')->with('offres', $offres)->with('user', $user);
+    }
+
+    public function deleteoffre($id)
+    {
+        $offre = Offre::find($id);
+        $offre->delete();
+        return back()->with('status',"L'offre a été suprimé avec succès");
+    }
+
+    public function addoffreur()
+    {
+        return view('admin.addoffreur');
+    }
+
+    public function saveoffreur(Request $request)
+    {
+        $this->validate($request, [
+            'nom' => 'required',
+            'prenoms' => 'required',
+            'email' => 'required',
+            'telephone' => 'required',
+            'password' => 'required| min:6',
+            'comfirmpassword' => 'required|same:password'
+        ]);
+        
+        $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+
+        $user = new User();
+        $user->nom = $request->input('nom');
+        $user->prenoms = $request->input('prenoms');
+        $user->code = $code;
+        $user->type = 1;
+        $user->email = $request->input('email');
+        $user->telephone = $request->input('telephone');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
+        return redirect('/espace/admin/offreurs')->with('status',"L'untilisateur a été créée avec succès");
+
+    }
+
+
+
 }

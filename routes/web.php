@@ -73,6 +73,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/offreurs', [AdminController::class, 'offreurs']);
     Route::get('/espace/admin/comptesdesactive', [AdminController::class, 'comptesdesactive']);
     Route::get('/espace/admin/addoffreur', [AdminController::class, 'addoffreur']);
+    Route::get('/espace/admin/desactiver/{id}', [AdminController::class, 'desactiver']);
+    Route::get('/espace/admin/offres/{id}', [AdminController::class, 'offres']);
+    Route::get('/espace/admin/deleteoffre/{id}', [AdminController::class, 'deleteoffre']);
+    Route::post('/espace/admin/saveoffreur', [AdminController::class, 'saveoffreur']);
+
+
 
 
 
