@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\RecruteurControlleur;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeControlleur;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeControlleur::class, 'homepage'])->name('homepage');
+Route::get('/login', [HomeControlleur::class, 'loginpage'])->name('loginpage');
+Route::get('/register', [HomeControlleur::class, 'registerpage'])->name('registerpage');
+Route::get('/opportunites', [HomeControlleur::class, 'opportunitiespage'])->name('opportunitiespage');
 
-// Route::get('/espace/client', function () {
-//     return view('user.dashboard');
-// });
 
 
 
