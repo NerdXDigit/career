@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('prenoms');
             $table->string('email')->unique();
             $table->string('telephone')->unique();
-            $table->integer('type');
-            $table->integer('valide');
+            $table->integer('type')->default(0);
+            $table->integer('valide')->default(0);
             $table->string('code');
-            $table->integer('actif');
+            $table->integer('actif')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

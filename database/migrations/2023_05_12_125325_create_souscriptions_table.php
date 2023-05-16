@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('offre_id');
             $table->date('date_ajout');
             $table->string('code');
-            $table->integer('valide')->default(0);
+            $table->integer('valide_souscription')->default(0);
             $table->timestamps();
         });
     }

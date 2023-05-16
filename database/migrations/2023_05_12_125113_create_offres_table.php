@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('entreprise');
             $table->string('logo');
             $table->string('code');
-            $table->integer('actif');
-            $table->integer('valide');
+            $table->integer('actif')->default(1);
+            $table->integer('valide')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
