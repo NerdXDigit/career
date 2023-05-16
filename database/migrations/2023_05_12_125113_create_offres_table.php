@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titre');
             $table->text('description')->nullable();
             $table->string('lieu');
+            $table->string('pays');
             $table->string('deadline');
             $table->string('poste');
             $table->string('entreprise');

@@ -13,6 +13,7 @@ class Offre extends Model
         'titre',
         'description',
         'lieu',
+        'pays',
         'deadline',
         'poste',
         'entreprise',

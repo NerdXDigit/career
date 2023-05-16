@@ -22,16 +22,22 @@ Route::get('/login', [HomeControlleur::class, 'loginpage'])->name('loginpage');
 Route::get('/register', [HomeControlleur::class, 'registerpage'])->name('registerpage');
 Route::get('/opportunites', [HomeControlleur::class, 'opportunitiespage'])->name('opportunitiespage');
 
+Route::post('/loginaction', [HomeControlleur::class, 'loginaction'])->name('loginaction');
+Route::post('/registeraction', [HomeControlleur::class, 'registeraction'])->name('registeraction');
+
+
+Route::get('/test', [HomeControlleur::class, 'offres']);
+
+
+
 
 
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/logout', function () {
-
             auth()->logout();
             return redirect('/');
-
     });
 
     // Client
