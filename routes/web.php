@@ -27,6 +27,14 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/logout', function () {
+
+            auth()->logout();
+            return redirect('/');
+
+    });
+
     // Client
 
     Route::get('/espace/client', [ClientController::class, 'userDashboard'])->name('userDashboard');
