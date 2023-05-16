@@ -1,6 +1,11 @@
+
 @if(Auth::user()->type == 1)
   <script>window.location=" {{route('offreurDashboard')}} "</script>
 @endif
+@if(Auth::user()->type == 2)
+  <script>window.location=" {{route('adminDashboard')}} "</script>
+@endif
+
 <!DOCTYPE html>
 <html
   lang="en"

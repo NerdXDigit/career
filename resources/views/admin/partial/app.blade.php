@@ -1,9 +1,11 @@
 @if(Auth::user()->type == 0)
   <script>window.location=" {{route('userDashboard')}} "</script>
 @endif
-@if(Auth::user()->type == 2)
-  <script>window.location=" {{route('adminDashboard')}} "</script>
+@if(Auth::user()->type == 1)
+  <script>window.location=" {{route('offreurDashboard')}} "</script>
 @endif
+
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -134,7 +136,7 @@
 
           <ul class="menu-inner py-1">
 
-            @include('offreur.navbar')
+            @include('admin.navbar')
 
            
 

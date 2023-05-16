@@ -10,13 +10,12 @@ use App\Models\Souscription;
 use App\Models\Fichier;
 use Illuminate\Support\Facades\DB;
 
-
-class RecruteurControlleur extends Controller
+class AdminController extends Controller
 {
     //
-    public function offreurDashboard()
+    public function adminDashboard()
     {
-        return view('offreur.dashboard');
+        return view('admin.dashboard');
     }
 
     public function saveoffer(Request $request) {
@@ -62,22 +61,22 @@ class RecruteurControlleur extends Controller
         $offres = Offre::where('user_id', auth()->user()->id)
                             ->get();
 
-        return view('offreur.listoffer')->with('offres', $offres);
+        return view('admin.listoffer')->with('offres', $offres);
     }
 
     public function addoffer(Request $request) {
-        return view('offreur.addoffer');
+        return view('admin.addoffer');
     }
 
     public function addconditionoffer(Request $request) {
-        return view('offreur.addconditionoffer');
+        return view('admin.addconditionoffer');
     }
 
     public function editoffer($id) {
         $offre = Offre::select()
                 ->where('id', $id)
                 ->first();
-        return view('offreur.editoffer')->with('offre', $offre);
+        return view('admin.editoffer')->with('offre', $offre);
     }
 
     public function updateoffer(Request $request) {
@@ -112,7 +111,7 @@ class RecruteurControlleur extends Controller
         $offre->logo = $fileNameToStore;
         $offre->update();
 
-        return redirect('/espace/offreur/listoffer')->with('status',"L'offre a été modifié avec succès");
+        return redirect('/espace/admin/listoffer')->with('status',"L'offre a été modifié avec succès");
 
 
     }
@@ -125,7 +124,7 @@ class RecruteurControlleur extends Controller
             ->where('offres.user_id', auth()->user()->id)
             ->get();
 
-        return view('offreur.canditat')->with('candidat', $candidat);
+        return view('admin.canditat')->with('candidat', $candidat);
     }
 
     public function stopoffer($id)
@@ -153,7 +152,7 @@ class RecruteurControlleur extends Controller
         $condition->description = $request->input('description');
         $condition->save();
 
-        return redirect('/espace/offreur/listoffer')->with('status',"La condition a été enregistré avec succès");
+        return redirect('/espace/admin/listoffer')->with('status',"La condition a été enregistré avec succès");
     }
 
     public function detailsouscription($id)
@@ -169,7 +168,7 @@ class RecruteurControlleur extends Controller
         $fichier = Fichier::where('user_id', $id_user)
                             ->where('offre_id', $id_offre)
                             ->get();
-        return view('offreur.detailsouscriptions')->with('candidat', $candidat)->with('fichier', $fichier);
+        return view('admin.detailsouscriptions')->with('candidat', $candidat)->with('fichier', $fichier);
     }
 
     public function validersouscription($id)
@@ -184,7 +183,7 @@ class RecruteurControlleur extends Controller
     {
         $condition = Condition::where('offre_id', $id)
             ->get();
-        return view('offreur.conditionoffer')->with('condition', $condition);
+        return view('admin.conditionoffer')->with('condition', $condition);
     }
 
     public function editcondition($id)
@@ -192,7 +191,7 @@ class RecruteurControlleur extends Controller
         $condition = Condition::select()
                 ->where('id', $id)
                 ->first();
-        return view('offreur.editcondition')->with('condition', $condition);
+        return view('admin.editcondition')->with('condition', $condition);
     }
 
     public function updatecondition(Request $request)
@@ -207,6 +206,9 @@ class RecruteurControlleur extends Controller
         $condition->description = $request->input('description');
         $condition->update();
 
-        return redirect('/espace/offreur/listoffer')->with('status',"La condition a été mise a jour avec succès");
+        return redirect('/espace/admin/listoffer')->with('status',"La condition a été mise a jour avec succès");
     }
+
+
+    
 }
