@@ -150,41 +150,29 @@
                 <div class="mt-60">
                   <div class="text-16 lh-1 fw-500 text-dark-1 mb-30">Filtrer</div>
                   <div class="">
+                    
 
-                    <div class="">
-                      <div class="accordion js-accordion">
-                        <div class="accordion__item">
-                          <div class="accordion__button py-10 px-20 bg-light-4 rounded-16">
-                            <span class="text-16 fw-500 text-dark-1">About</span>
-                            <div class="accordion__icon">
-                              <div class="icon size-20 mt-5" data-feather="chevron-down"></div>
-                              <div class="icon size-20" data-feather="chevron-up"></div>
-                            </div>
-                          </div>
-                          <div class="accordion__content">
-                            <div class="accordion__content__inner px-30 pt-15 pb-10">
-                              <div class="sidebar__links y-gap-5">
-                                <div><a href="#">About v1</a></div>
-                                <div><a href="#">About v2</a></div>
-                                <div><a href="#">About v3</a></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                    <form action="" class="contact-form respondForm__form row y-gap-20 pt-30">
+                      <div>
+                      <select name="" id="">
+                        <option value="">Benin</option>
+                        <option value="">Benin</option>
+                        <option value="">Benin</option>
+                      </select>
+                    </div>
+
+                      <div>
+                        <input type="text" name="" id="" placeholder="Poste">
                       </div>
-                    </div>
-
-                    <div class="">
-                      <a href="#" class="d-flex items-center justify-between py-15 px-20 rounded-16 text-16 lh-1 fw-500 -base-sidebar-menu-hover">
-                        Help
-                      </a>
-                    </div>
-
-                    <div class="">
-                      <a href="#" class="d-flex items-center justify-between py-15 px-20 rounded-16 text-16 lh-1 fw-500 -base-sidebar-menu-hover">
-                        Faq
-                      </a>
-                    </div>
+                      <div>
+                        <input type="text" name="" id="" placeholder="Entreprise"> 
+                      </div>
+                      
+                      <div>
+                        <button type="submit" class="button -md -dark-1 text-white fw-500 w-1/1">Rechercher</button>
+                      </div>
+                      
+                    </form>
 
                   </div>
                 </div>
