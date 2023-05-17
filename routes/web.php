@@ -26,7 +26,7 @@ Route::post('/loginaction', [HomeControlleur::class, 'loginaction'])->name('logi
 Route::post('/registeraction', [HomeControlleur::class, 'registeraction'])->name('registeraction');
 
 
-Route::get('/test', [HomeControlleur::class, 'offres']);
+
 
 
 
@@ -39,6 +39,10 @@ Route::middleware('auth')->group(function () {
             auth()->logout();
             return redirect('/');
     });
+
+    Route::get('/condition/{id}', [HomeControlleur::class, 'condition']);
+    Route::post('/savefichier', [HomeControlleur::class, 'savefichier']);
+
 
     // Client
 

@@ -91,6 +91,7 @@ class HomeControlleur extends Controller
     {
         $condition = Condition::where('offre_id', $id)
             ->get();
+        return view('condition')->with('condition', $condition);
     }
 
     public function savefichier(Request $request)
@@ -120,12 +121,8 @@ class HomeControlleur extends Controller
             $fichier->save();
         }
 
-
-            
-
-
-
-
+        return back()->with('status',"Les documents a été enregistré avec succès");
     }
+
 
 }

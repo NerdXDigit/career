@@ -23,12 +23,7 @@
             <form action="/espace/admin/savecondition" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="hidden" name="offre_id" value="{{request('id')}}">
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="exampleFormControlReadOnlyInput1">Titre de  l'offre</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1" placeholder="" readonly="" value="Titre ofree">
-                    </div>
-                  </div>
+
                 
                 
 
