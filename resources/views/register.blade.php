@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.compte.master')
 @section('title','Connexion')
 @section('content')
 <section class="form-page">

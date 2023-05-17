@@ -21,15 +21,10 @@ Route::get('/', [HomeControlleur::class, 'homepage'])->name('homepage');
 Route::get('/login', [HomeControlleur::class, 'loginpage'])->name('loginpage');
 Route::get('/register', [HomeControlleur::class, 'registerpage'])->name('registerpage');
 Route::get('/opportunites', [HomeControlleur::class, 'opportunitiespage'])->name('opportunitiespage');
+Route::get('/opportunites/details/{id}', [HomeControlleur::class, 'opportunitiespagedetails'])->name('opportunitiespagedetails');
 
 Route::post('/loginaction', [HomeControlleur::class, 'loginaction'])->name('loginaction');
 Route::post('/registeraction', [HomeControlleur::class, 'registeraction'])->name('registeraction');
-
-
-
-
-
-
 
 
 
@@ -40,7 +35,8 @@ Route::middleware('auth')->group(function () {
             return redirect('/');
     });
 
-    Route::get('/condition/{id}', [HomeControlleur::class, 'condition']);
+    
+    Route::get('/condition/{id}', [HomeControlleur::class, 'condition'])->name('conditionpage');
     Route::post('/savefichier', [HomeControlleur::class, 'savefichier']);
 
 

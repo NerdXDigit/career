@@ -17,6 +17,7 @@ class Offre extends Model
         'deadline',
         'poste',
         'entreprise',
+        'niveau',
         'logo',
         'code',
         'actif',

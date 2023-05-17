@@ -77,50 +77,58 @@ class DatabaseSeeder extends Seeder
         // ]);
 
 
-        // DB::table('offres')->insert([
-        //     'titre' => 'Poste disponible',
-        //     'description' => 'coucou',
-        //     'lieu' => 'Parakou',
-        //     'deadline' => '2023-05-15',
-        //     'poste' => 'Developpeur web React',
-        //     'entreprise' => 'Faridev',
-        //     'logo' => 'logo.png',
-        //     'user_id' => 1,
-        //     'code' => '57799d9d',
-        // ]);
-        // DB::table('offres')->insert([
-        //     'titre' => 'Poste à occuper',
-        //     'description' => 'coucou',
-        //     'lieu' => 'Cotonou',
-        //     'deadline' => '2023-05-15',
-        //     'poste' => 'Developpeur web Vue',
-        //     'entreprise' => 'Faridev',
-        //     'logo' => 'logo.png',
-        //     'user_id' => 1,
-        //     'code' => '57799d9d',
-        // ]);
-        // DB::table('offres')->insert([
-        //     'titre' => 'Recherche de graphiste',
-        //     'description' => 'coucou',
-        //     'lieu' => 'Come',
-        //     'deadline' => '2023-05-15',
-        //     'poste' => 'Graphiste',
-        //     'entreprise' => 'Faridev',
-        //     'logo' => 'logo.png',
-        //     'user_id' => 1,
-        //     'code' => '57799d9d',
-        // ]);
-        // DB::table('offres')->insert([
-        //     'titre' => 'Poste immédiatement disponible',
-        //     'description' => 'coucou',
-        //     'lieu' => 'Agla',
-        //     'deadline' => '2023-05-15',
-        //     'poste' => 'Developpeur web senior',
-        //     'entreprise' => 'Faridev',
-        //     'logo' => 'logo.png',
-        //     'user_id' => 1,
-        //     'code' => '57799d9d',
-        // ]);
+        DB::table('offres')->insert([
+            'titre' => 'Poste disponible',
+            'description' => 'coucou',
+            'lieu' => 'Parakou',
+            'pays' => 'Bénin',
+            'deadline' => '2023-05-15',
+            'poste' => 'Developpeur web React',
+            'entreprise' => 'Faridev',
+            'niveau' => 'Débutant',
+            'logo' => 'logo.png',
+            'user_id' => 1,
+            'code' => '57799d9d',
+        ]);
+        DB::table('offres')->insert([
+            'titre' => 'Poste à occuper',
+            'description' => 'coucou',
+            'lieu' => 'Cotonou',
+            'pays' => 'Côte d\'ivoire',
+            'deadline' => '2023-05-15',
+            'poste' => 'Developpeur web Vue',
+            'entreprise' => 'Faridev',
+            'niveau' => 'Moyen',
+            'logo' => 'logo.png',
+            'user_id' => 1,
+            'code' => '57799d9d',
+        ]);
+        DB::table('offres')->insert([
+            'titre' => 'Recherche de graphiste',
+            'description' => 'coucou',
+            'lieu' => 'Come',
+            'pays' => 'Sénégale',
+            'deadline' => '2023-05-15',
+            'poste' => 'Graphiste',
+            'entreprise' => 'Faridev',
+            'niveau' => 'Débutant',
+            'logo' => 'logo.png',
+            'user_id' => 1,
+            'code' => '57799d9d',
+        ]);
+        DB::table('offres')->insert([
+            'titre' => 'Poste immédiatement disponible',
+            'description' => 'coucou',
+            'lieu' => 'Agla',
+            'pays' => 'Bénin',
+            'deadline' => '2023-05-15',
+            'poste' => 'Developpeur web senior',
+            'entreprise' => 'Faridev',
+            'niveau' => 'Sénior',
+            'logo' => 'logo.png',
+            'user_id' => 1,
+            'code' => '57799d9d',
+        ]);
 
     }
 }

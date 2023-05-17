@@ -24,7 +24,15 @@ class HomeControlleur extends Controller
     //
 
     public function homepage(Request $request) {
-        return view('home');
+
+        $offres = DB::table('offres')
+                    ->where('actif', 1)
+                    ->where('valide', 1)
+                    ->orderBy('id', 'DESC')
+                    ->limit(6)
+                    ->get();
+
+        return view('home')->with(compact('offres'));
     }
 
     public function loginpage(Request $request) {
@@ -36,7 +44,22 @@ class HomeControlleur extends Controller
     }
 
     public function opportunitiespage(Request $request) {
-        return view('opportunities');
+
+        $offres = Offre::where('actif', 1)
+                        ->where('valide', 1)
+                        ->get();
+
+        return view('opportunities')->with(compact('offres'));
+    }
+
+    public function opportunitiespagedetails(Request $request, $id) {
+
+        $offre = Offre::find($id);
+        if($offre) {
+            $conditions = Offre::find($id)->conditions;
+            return view('opportunities_details')->with(compact('offre','conditions'));
+        } else
+            return redirect()->route('opportunitiespage');
     }
 
     public function loginaction(LoginRequest $request): RedirectResponse
@@ -77,16 +100,17 @@ class HomeControlleur extends Controller
     }
 
     // Affiche offres limit 6
-    public function offres()
-    {
-        $offres = DB::table('offres')
-                    // ->where('actif', 1)
-                    // ->where('valide', 1)
-                    ->orderBy('id', 'DESC')
-                    ->limit(6)
-                    ->get();
+    // public function offres()
+    // {
+    //     $offres = DB::table('offres')
+    //                 // ->where('actif', 1)
+    //                 // ->where('valide', 1)
+    //                 ->orderBy('id', 'DESC')
+    //                 ->limit(6)
+    //                 ->get();
         
-    }
+    // }
+
     public function condition($id)
     {
         $condition = Condition::where('offre_id', $id)
@@ -94,13 +118,14 @@ class HomeControlleur extends Controller
         return view('condition')->with('condition', $condition);
     }
 
-    public function savefichier(Request $request)
-    {
+    public function savefichier(Request $request) {
+
         $nbr = Condition::where('offre_id', $request->input('offre_id'))
-            ->count();
+                ->count();
+
         for ($i=1; $i <= $nbr; $i++) { 
-            $this->validate($request, [
-                'file'.$i => 'required|mimes:pdf|max:50000'
+            $request->validate($request, [
+                'file'.$i => ['required','max:50000','mimes:pdf']
             ]);
         }
         for ($i=1; $i <= $nbr; $i++) { 

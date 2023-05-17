@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('deadline');
             $table->string('poste');
             $table->string('entreprise');
+            $table->string('niveau');
             $table->string('logo');
             $table->string('code');
             $table->integer('actif')->default(1);

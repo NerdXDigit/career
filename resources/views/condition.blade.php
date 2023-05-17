@@ -1,7 +1,7 @@
-@extends('layout.master')
+@extends('layout.compte.master')
 @section('title','Connexion')
 @section('content')
-<section class="form-page js-mouse-move-container">
+<section class="form-page js-mouse-move-container justify-center">
 
 
     <div class="form-page__content lg:py-50">
@@ -15,20 +15,16 @@
                   {{ csrf_field() }}
                  
                   <input type="hidden" name="offre_id" value="{{request('id')}}">
-                  @php
-                        $i = 1
-                    @endphp
-                  @foreach ($condition as $item)
-                    <div class="col-12">
-                        <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">{{$item->nom}} {{$i}}</label>
-                        <input type="file" name="file{{$i}}" placeholder="">
-                        @if ($errors->has('file'.$i))
-                            <div style="color: #f1416c !important">{{$errors->first('file'.$i)}} </div>
+                    
+                  @foreach ($condition as $index=>$item)
+                    <div class="col-12 d-flex flex-column">
+                        <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">{{$item->nom}} </label>
+                        <input type="file" class="form-control" name="file{{$index+1}}" placeholder="">
+                        @if ($errors->has('file'.$index+1))
+                            <div style="color: #f1416c !important">{{$errors->first('file'.$index+1)}} </div>
                         @endif
                     </div>
-                    @php
-                    $i++
-                    @endphp
+                  
                   @endforeach
                   
                 
