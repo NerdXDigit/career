@@ -52,6 +52,17 @@ class HomeControlleur extends Controller
         return view('opportunities')->with(compact('offres'));
     }
 
+    public function opportunitiesrecherche(Request $request) {
+
+        $offres = Offre::where('pays','LIKE', '%' .$request->pays. '%')
+                        ->where('poste','LIKE', '%' .$request->poste. '%')
+                        ->where('entreprise','LIKE', '%' .$request->entreprise. '%')
+                        ->get();
+
+
+        return view('opportunities_recherche')->with(compact('offres'));
+    }
+
     public function opportunitiespagedetails(Request $request, $id) {
 
         $offre = Offre::find($id);

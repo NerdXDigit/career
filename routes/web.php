@@ -22,6 +22,7 @@ Route::get('/login', [HomeControlleur::class, 'loginpage'])->name('loginpage');
 Route::get('/register', [HomeControlleur::class, 'registerpage'])->name('registerpage');
 Route::get('/opportunites', [HomeControlleur::class, 'opportunitiespage'])->name('opportunitiespage');
 Route::get('/opportunites/details/{id}', [HomeControlleur::class, 'opportunitiespagedetails'])->name('opportunitiespagedetails');
+Route::post('/opportunites/recherche', [HomeControlleur::class, 'opportunitiesrecherche'])->name('opportunitiesrecherche');
 
 Route::post('/loginaction', [HomeControlleur::class, 'loginaction'])->name('loginaction');
 Route::post('/registeraction', [HomeControlleur::class, 'registeraction'])->name('registeraction');
@@ -43,7 +44,7 @@ Route::middleware('auth')->group(function () {
     // Client
 
     Route::get('/espace/client', [ClientController::class, 'userDashboard'])->name('userDashboard');
-    Route::get('/espace/client/souscription', [ClientController::class, 'userSouscription']);
+    Route::get('/espace/client/souscription', [ClientController::class, 'userSouscription'])->name('userSouscription');
 
     // Offreur
     Route::get('/espace/offreur', [RecruteurControlleur::class, 'offreurDashboard'])->name('offreurDashboard');

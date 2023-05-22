@@ -45,7 +45,7 @@
 
               <div class="header__logo ">
                 <a data-barba href="{{route('homepage')}}">
-                  <img src="{{asset('img/general/logo-dark.svg')}}" alt="logo">
+                  <img src="{{asset('logo.png')}}" width="200" alt="logo">
                 </a>
               </div>
 

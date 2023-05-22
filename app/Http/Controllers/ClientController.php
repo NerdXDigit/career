@@ -11,7 +11,8 @@ class ClientController extends Controller
     //
     public function userDashboard()
     {
-        return view('user.dashboard');
+        // return view('user.dashboard');
+        return redirect()->route('userSouscription');
     }
     public function userSouscription()
     {
