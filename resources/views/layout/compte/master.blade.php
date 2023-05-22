@@ -50,16 +50,6 @@
                 </a>
               </div>
 
-              <div class="header-search-field ml-30">
-                <form action="#">
-                  <div class="header-search-field__group">
-                    <input type="text" placeholder="What do you want to learn?">
-                    <button type="submit">
-                      <i class="icon icon-search"></i>
-                    </button>
-                  </div>
-                </form>
-              </div>
             </div>
           </div>
 
