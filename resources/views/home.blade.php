@@ -127,12 +127,10 @@
 
               <a href="{{route('opportunitiespage')}}" class="button -icon -light-11 text-purple-1">
                 Tout voir
-                <i class="icon-arrow-top-right text-13 ml-10"></i>
+                <i class="fa-solid fa-arrow-right text-13 ml-10"></i>
               </a>
-
             </div>
           </div>
-
         </div>
       </div>
     </div>

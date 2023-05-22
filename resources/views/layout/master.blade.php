@@ -13,8 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link rel="stylesheet" href=" {{asset('cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')}} " integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href=" {{asset('unpkg.com/leaflet%401.7.1/dist/leaflet.css')}} " integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
   <!-- Stylesheets -->
   <link rel="stylesheet" href=" {{asset('css/vendors.css')}} ">
   <link rel="stylesheet" href=" {{asset('css/main.css')}} ">
@@ -43,7 +42,7 @@
               <div class="d-flex items-center">
                 <div class="header__explore text-dark-1">
                   <button class="d-flex items-center js-dashboard-home-9-sidebar-toggle">
-                    <i class="icon -dark-text-white icon-explore"></i>
+                    <i class="fas fa-bars-staggered"></i>
                   </button>
                 </div>
 
@@ -80,14 +79,14 @@
 
                             <div class="sidebar__item -is-active -dark-bg-dark-2">
                               <a href="{{route('userDashboard')}}" class="d-flex items-center text-17 lh-1 fw-500 -dark-text-white">
-                                <i class="text-20 icon-discovery mr-15"></i>
+                                <i class="fa-solid fa-table-columns text-20  mr-15"></i>
                                 Dashboard
                               </a>
                             </div>
 
                             <div class="sidebar__item ">
                               <a href="/logout" class="d-flex items-center text-17 lh-1 fw-500 ">
-                                <i class="text-20 icon-power mr-15"></i>
+                                <i class="text-20 fas fa-right-from-bracket mr-15"></i>
                                 Logout
                               </a>
                             </div>
@@ -118,28 +117,28 @@
 
                     <div class="sidebar__item -is-active">
                       <a href="{{route('homepage')}}" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 icon-discovery mr-15"></i>
+                        <i class="text-20 fas fa-house mr-15"></i>
                         Accueil
                       </a>
                     </div>
 
                     <div class="sidebar__item">
                       <a href="{{route('opportunitiespage')}}" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 icon-discovery mr-15"></i>
+                        <i class="text-20 fa-solid fa-compass mr-15"></i>
                         Nos Opportunités
                       </a>
                     </div>
 
                     <div class="sidebar__item ">
                       <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 icon-play-button mr-15"></i>
+                        <i class="text-20 fa-solid fa-circle-play mr-15"></i>
                         Formations
                       </a>
                     </div>
 
                     <div class="sidebar__item ">
                       <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 icon-book mr-15"></i>
+                        <i class="text-20 fas fa-book mr-15"></i>
                         Livres
                       </a>
                     </div>
