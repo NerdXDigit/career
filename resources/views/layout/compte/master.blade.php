@@ -17,7 +17,7 @@
   <link rel="stylesheet" href=" {{asset('cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')}} " integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href=" {{asset('unpkg.com/leaflet%401.7.1/dist/leaflet.css')}} " integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  @yield('link')
   <!-- Stylesheets -->
   <link rel="stylesheet" href=" {{asset('css/vendors.css')}} ">
   <link rel="stylesheet" href=" {{asset('css/main.css')}} ">

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class HomeControlleur extends Controller
 {
@@ -131,31 +132,58 @@ class HomeControlleur extends Controller
 
     public function savefichier(Request $request) {
 
-        $nbr = Condition::where('offre_id', $request->input('offre_id'))
-                ->count();
+        $fichiers = $request->allFiles();
 
-        for ($i=1; $i <= $nbr; $i++) { 
-            $request->validate($request, [
-                'file'.$i => ['required','max:50000','mimes:pdf']
-            ]);
+        // Définir les règles de validation
+        $regles = [];
+        foreach ($fichiers as $nomChamp => $fichier) {
+            $regles[$nomChamp] = 'required|mimes:pdf,doc,docx';
         }
-        for ($i=1; $i <= $nbr; $i++) { 
-            $fileNameWithExt = $request->file('file'.$i)->getClientOriginalName();
 
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
         
-            $extension = $request->file('file'.$i)->getClientOriginalExtension();
-        
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-        
-            $path = $request->file('file'.$i)->storeAs('public/file', $fileNameToStore);
+        // Valider les fichiers
+        $validateur = Validator::make($fichiers, $regles);
 
-            $fichier = new Fichier();
-            $fichier->user_id = auth()->user()->id;
-            $fichier->offre_id = $request->input('offre_id');
-            $fichier->fichier = $fileNameToStore;
-            $fichier->save();
+
+        if ($validateur->fails()) {
+            return redirect()->back()->withErrors($validateur)->withInput();
         }
+
+        foreach ($fichiers as $nomChamp => $fichier) {
+            
+            // Générer un nom de fichier unique
+            $nomFichier = $fichier->getClientOriginalName();
+            $nomFichierUnique = uniqid() . '_' . $nomFichier;
+
+            // Enregistrer le fichier dans un emplacement spécifique
+            // $fichier->storeAs('chemin/vers/le/dossier', $nomFichierUnique);
+            $fichier->move(public_path().'/file/', $nomFichierUnique);
+            
+            $fichier_condition = new Fichier();
+            $fichier_condition->user_id = auth()->user()->id;
+            $fichier_condition->offre_id = $request->input('offre_id');
+            $fichier_condition->fichier = $nomFichierUnique;
+            $fichier_condition->save();
+
+        }
+
+        // for ($i=1; $i <= $nbr; $i++) { 
+        //     $fileNameWithExt = $request->file('file'.$i)->getClientOriginalName();
+
+        //     $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        
+        //     $extension = $request->file('file'.$i)->getClientOriginalExtension();
+        
+        //     $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+        
+        //     $path = $request->file('file'.$i)->storeAs('public/file', $fileNameToStore);
+
+        //     $fichier = new Fichier();
+        //     $fichier->user_id = auth()->user()->id;
+        //     $fichier->offre_id = $request->input('offre_id');
+        //     $fichier->fichier = $fileNameToStore;
+        //     $fichier->save();
+        // }
 
         return back()->with('status',"Les documents a été enregistré avec succès");
     }
