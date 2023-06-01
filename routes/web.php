@@ -59,9 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/espace/offreur/savecondition', [RecruteurControlleur::class, 'savecondition']);
     Route::get('/espace/offreur/detailsouscription/{id}', [RecruteurControlleur::class, 'detailsouscription']);
     Route::get('/espace/offreur/validersouscription/{id}', [RecruteurControlleur::class, 'validersouscription']);
+    Route::get('/espace/offreur/rejetersouscription/{id}', [RecruteurControlleur::class, 'rejetersouscription']);
     Route::get('/espace/offreur/conditionoffer/{id}', [RecruteurControlleur::class, 'conditionoffer']);
     Route::get('/espace/offreur/editcondition/{id}', [RecruteurControlleur::class, 'editcondition']);
     Route::post('/espace/offreur/updatecondition', [RecruteurControlleur::class, 'updatecondition']);
+    Route::get('/espace/offreur/offrepostulant/{id}', [RecruteurControlleur::class, 'offrepostulant']);
+
 
 
     // Admin
@@ -78,11 +81,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/espace/admin/savecondition', [AdminController::class, 'savecondition']);
     Route::get('/espace/admin/detailsouscription/{id}', [AdminController::class, 'detailsouscription']);
     Route::get('/espace/admin/validersouscription/{id}', [AdminController::class, 'validersouscription']);
+    Route::get('/espace/admin/rejetersouscription/{id}', [AdminController::class, 'rejetersouscription']);
     Route::get('/espace/admin/conditionoffer/{id}', [AdminController::class, 'conditionoffer']);
     Route::get('/espace/admin/editcondition/{id}', [AdminController::class, 'editcondition']);
     Route::post('/espace/admin/updatecondition', [AdminController::class, 'updatecondition']);
+    Route::get('/espace/admin/offrepostulant/{id}', [AdminController::class, 'offrepostulant']);
+
     
-        // Offreur
+        // admin
     Route::get('/espace/admin/demandeurs', [AdminController::class, 'demandeurs']);
     Route::get('/espace/admin/offreurs', [AdminController::class, 'offreurs']);
     Route::get('/espace/admin/comptesdesactive', [AdminController::class, 'comptesdesactive']);
@@ -90,6 +96,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/desactiver/{id}', [AdminController::class, 'desactiver']);
     Route::get('/espace/admin/offres/{id}', [AdminController::class, 'offres']);
     Route::get('/espace/admin/deleteoffre/{id}', [AdminController::class, 'deleteoffre']);
+    Route::get('/espace/admin/activeroffre/{id}', [AdminController::class, 'activeroffre']);
+    Route::get('/espace/admin/desactiveroffre/{id}', [AdminController::class, 'desactiveroffre']);
     Route::post('/espace/admin/saveoffreur', [AdminController::class, 'saveoffreur']);
 
 

@@ -15,7 +15,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-        <table class="table">
+        <table class="table"  id="myTable">
           <thead>
             <tr>
               <th>Nom</th>

@@ -13,7 +13,7 @@
             <p>Titre : {{$candidat->titre}}</p>
             <p>Poste : {{$candidat->poste}}</p>
             <p>Entreprise : {{$candidat->entreprise}}</p>
-            <p>Date souscription : {{$candidat->date_ajout}}</p>
+            <p>Date souscription : {{$candidat->created_at}}</p>
             <h4>Document</h4>
             <table class="table">
                 <thead>

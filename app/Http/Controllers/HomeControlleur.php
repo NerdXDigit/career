@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\PostuleMail;
+use App\Mail\PostuleMailOffreur;
 
 class HomeControlleur extends Controller
 {
@@ -165,27 +169,45 @@ class HomeControlleur extends Controller
             $fichier_condition->fichier = $nomFichierUnique;
             $fichier_condition->save();
 
+           
+
         }
 
-        // for ($i=1; $i <= $nbr; $i++) { 
-        //     $fileNameWithExt = $request->file('file'.$i)->getClientOriginalName();
+        $infocandidat = User::where('id', auth()->user()->id)->first();
 
-        //     $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-        
-        //     $extension = $request->file('file'.$i)->getClientOriginalExtension();
-        
-        //     $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-        
-        //     $path = $request->file('file'.$i)->storeAs('public/file', $fileNameToStore);
+        $emailcandidat = $infocandidat->email;
 
-        //     $fichier = new Fichier();
-        //     $fichier->user_id = auth()->user()->id;
-        //     $fichier->offre_id = $request->input('offre_id');
-        //     $fichier->fichier = $fileNameToStore;
-        //     $fichier->save();
-        // }
+        $mailinfocandidat = [
+            'sujet'=> "Canditature envoyé avec succès",
+            'message'=> "Votre candicature a été recu avec succes",
+         ];
 
-        return back()->with('status',"Les documents a été enregistré avec succès");
+         $mailinfooffreur = [
+            'sujet'=> "Canditature envoyé avec succès",
+            'message'=> "Votre candicature a été recu avec succes",
+         ];
+
+        
+
+        Mail::to($emailcandidat)->send( new PostuleMail($mailinfocandidat));
+
+        // Mail::to($emailoffreur)->send( new PostuleMailOffreur($mailinfooffreur));
+
+
+
+
+        $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+
+
+        $souscription = new Souscription();
+        $souscription->user_id = auth()->user()->id;
+        $souscription->offre_id = $request->input('offre_id');
+        $souscription->code = $code;
+        $souscription->save();
+
+
+
+        return redirect('/espace/client');
     }
 
 

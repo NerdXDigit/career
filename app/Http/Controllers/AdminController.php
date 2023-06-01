@@ -25,35 +25,60 @@ class AdminController extends Controller
             'titre' => 'required',
             'lieu' => 'required',
             'entreprise' => 'required',
+            'pays' => 'required',
+            'niveau' => 'required',
             'poste' => 'required',
             'deadline' => 'required',
-            'logo' => 'image|required|max:1999',
+            'logo' => 'image|max:1999',
             'description' => 'required'
         ]);
-
-        $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+        if($request->file('logo')){
+            $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
         
-        $fileNameWithExt = $request->file('logo')->getClientOriginalName();
+            $fileNameWithExt = $request->file('logo')->getClientOriginalName();
 
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-    
-        $extension = $request->file('logo')->getClientOriginalExtension();
-    
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-    
-        $path1 = $request->file('logo')->storeAs('public/offrelogo', $fileNameToStore);
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+        
+            $extension = $request->file('logo')->getClientOriginalExtension();
+        
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+        
+            $path1 = $request->file('logo')->storeAs('public/offrelogo', $fileNameToStore);
 
-        $offre = new Offre();
-        $offre->titre = $request->input('titre');
-        $offre->lieu = $request->input('lieu');
-        $offre->code = $code;
-        $offre->user_id = auth()->user()->id;
-        $offre->entreprise = $request->input('entreprise');
-        $offre->poste = $request->input('poste');
-        $offre->deadline = $request->input('deadline');
-        $offre->description = $request->input('description');
-        $offre->logo = $fileNameToStore;
-        $offre->save();
+
+            
+            $offre = new Offre();
+            $offre->titre = $request->input('titre');
+            $offre->lieu = $request->input('lieu');
+            $offre->pays = $request->input('pays');
+            $offre->niveau = $request->input('niveau');
+            $offre->code = $code;
+            $offre->user_id = auth()->user()->id;
+            $offre->entreprise = $request->input('entreprise');
+            $offre->poste = $request->input('poste');
+            $offre->deadline = $request->input('deadline');
+            $offre->description = $request->input('description');
+            $offre->save();
+
+
+           
+        }else{
+            $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+
+            $offre = new Offre();
+            $offre->titre = $request->input('titre');
+            $offre->lieu = $request->input('lieu');
+            $offre->pays = $request->input('pays');
+            $offre->niveau = $request->input('niveau');
+            $offre->code = $code;
+            $offre->user_id = auth()->user()->id;
+            $offre->entreprise = $request->input('entreprise');
+            $offre->poste = $request->input('poste');
+            $offre->deadline = $request->input('deadline');
+            $offre->description = $request->input('description');
+            $offre->save();
+        }
+        
 
         return back()->with('status',"L'offre a été enregistré avec succès");
 
@@ -128,6 +153,18 @@ class AdminController extends Controller
         return view('admin.canditat')->with('candidat', $candidat);
     }
 
+    public function offrepostulant($id) {
+
+        $candidat = DB::table('souscriptions')
+            ->join('users', 'users.id','=','souscriptions.user_id')
+            ->join('offres', 'offres.id','=','souscriptions.offre_id')
+            ->where('offres.user_id', auth()->user()->id)
+            ->where('souscriptions.offre_id', $id)
+            ->get();
+
+        return view('admin.offrecanditat')->with('candidat', $candidat);
+    }
+
     public function stopoffer($id)
     {
         $offre = Offre::find($id);
@@ -179,6 +216,13 @@ class AdminController extends Controller
         $offre->update();
         return back()->with('status',"La souscriptions a été valider avec succès");
     }
+    public function rejetersouscription($id)
+    {
+        $offre = Souscription::find($id);
+        $offre->valide_souscription = 2;
+        $offre->update();
+        return back()->with('status',"La souscriptions a été rejeté avec succès");
+    }
 
     public function conditionoffer($id)
     {
@@ -224,7 +268,10 @@ class AdminController extends Controller
     }
     public function offreurs()
     {
-        $offreurs = User::where('type', 1)->get();
+        $offreurs = DB::table('users')
+                        ->where('type', 1)
+                        ->OrWhere('type', 2)
+                        ->get();
         return view('admin.offreurs')->with('offreurs', $offreurs);
     }
     public function comptesdesactive()
@@ -242,6 +289,23 @@ class AdminController extends Controller
 
         return view('admin.offres')->with('offres', $offres)->with('user', $user);
     }
+
+    public function activeroffre($id)
+    {
+        $offre = Offre::find($id);
+        $offre->valide = 1;
+        $offre->update();
+        return back()->with('status',"L'offre a été valider avec succès");
+    }
+
+    public function desactiveroffre($id)
+    {
+        $offre = Offre::find($id);
+        $offre->valide = 0;
+        $offre->update();
+        return back()->with('status',"L'offre a été désactiver avec succès");
+    }
+
 
     public function deleteoffre($id)
     {

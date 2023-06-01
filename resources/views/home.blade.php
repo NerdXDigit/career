@@ -54,7 +54,13 @@
                       <a href="{{route('opportunitiespagedetails',$offre->id)}}" class="coursesCard -type-1 ">
                         <div class="relative">
                           <div class="coursesCard__image overflow-hidden rounded-8">
-                            <img class="w-1/1" src="{{asset('offres.png')}}" alt="image">
+                            
+                            @if ($offre->logo)
+                              <img class="w-1/1" src="{{asset('/storage/offrelogo/'.$offre->logo)}}" alt="image">
+                            @else
+                              <img class="w-1/1" src="{{asset('/offres.png')}}" alt="image">
+                            @endif
+                            
                             <div class="coursesCard__image_overlay rounded-8"></div>
                           </div>
                           <div class="d-flex justify-between py-10 px-10 absolute-full-center z-3">

@@ -94,7 +94,7 @@
                   </div>
 
                   <div class="mt-60">
-                    <h4 class="text-20">Conditions (Fichier à soumettre)</h4>
+                    <h4 class="text-20">Pièces jointes (Fichier à soumettre)</h4>
                     <ul class="ul-list y-gap-15 pt-30">
                         @foreach ($conditions as $condition)
                             <li style="color: black;"> {{$condition->nom}} </li>

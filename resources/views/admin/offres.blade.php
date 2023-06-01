@@ -15,7 +15,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-        <table class="table">
+        <table class="table" id="myTable">
           <thead>
             <tr>
               <th>Titre</th>
@@ -63,6 +63,12 @@
                     </button>
                     <div class="dropdown-menu" style="">
                       <a class="dropdown-item" href="{{url('/espace/admin/deleteoffre/'.$item->id)}}"><i class="bx bx-trash me-1"></i> Suprimer</a>
+                          @if ($item->valide == 0)
+                          <a class="dropdown-item" href="{{url('/espace/admin/activeroffre/'.$item->id)}}"><i class="bx bx-check me-1"></i> Valider</a>
+                          @endif
+                        @if ($item->valide == 1)
+                        <a class="dropdown-item" href="{{url('/espace/admin/desactiveroffre/'.$item->id)}}"><i class="bx bx-check me-1"></i> Desactiver</a>
+                        @endif
                     </div>
                   </div>
                 </td>

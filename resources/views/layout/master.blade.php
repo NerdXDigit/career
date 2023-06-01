@@ -14,6 +14,9 @@
   <link rel="stylesheet" href=" {{asset('cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css')}} " integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href=" {{asset('unpkg.com/leaflet%401.7.1/dist/leaflet.css')}} " integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+
+
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href=" {{asset('css/vendors.css')}} ">
   <link rel="stylesheet" href=" {{asset('css/main.css')}} ">
@@ -130,19 +133,6 @@
                       </a>
                     </div>
 
-                    <div class="sidebar__item ">
-                      <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 fa-solid fa-circle-play mr-15"></i>
-                        <span class="text-black">Formations</span>
-                      </a>
-                    </div>
-
-                    <div class="sidebar__item ">
-                      <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
-                        <i class="text-20 fas fa-book mr-15"></i>
-                        <span class="text-black">Livres</span>
-                      </a>
-                    </div>
 
                   </div>
                 </div>
@@ -465,6 +455,7 @@
   <script src=" {{asset('unpkg.com/leaflet%401.7.1/dist/leaflet.js')}} " integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script src=" {{asset('js/vendors.js')}} "></script>
   <script src=" {{asset('js/main.js')}} "></script>
+
 </body>
 
 </html>

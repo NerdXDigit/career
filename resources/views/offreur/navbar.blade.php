@@ -25,7 +25,7 @@
       </li>
       <li class="menu-item">
         <a href="{{url('espace/offreur/candidats')}}" class="menu-link">
-          <div data-i18n="Without menu">Mes Candidats</div>
+          <div data-i18n="Without menu">Mes Postulants</div>
         </a>
       </li>
     </ul>

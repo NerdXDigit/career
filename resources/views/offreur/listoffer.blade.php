@@ -15,7 +15,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-        <table class="table">
+        <table class="table" id="myTable">
           <thead>
             <tr>
               <th>Titre</th>
@@ -64,6 +64,7 @@
                     <div class="dropdown-menu" style="">
                       <a class="dropdown-item" href="{{url('/espace/offreur/addconditionoffer/'.$item->id)}}"><i class="bx bx-add-to-queue me-1"></i>Ajouter condition</a>
                       <a class="dropdown-item" href="{{url('/espace/offreur/conditionoffer/'.$item->id)}}"><i class="bx bx-eye me-1"></i>Voir condition</a>
+                      <a class="dropdown-item" href="{{url('/espace/offreur/offrepostulant/'.$item->id)}}"><i class="bx bx-eye me-1"></i>Voir Postulant</a>
                       <a class="dropdown-item" href="{{url('/espace/offreur/editoffer/'.$item->id)}}"><i class="bx bx-edit-alt me-1"></i>Edit</a>
                       <a class="dropdown-item" href="{{url('/espace/offreur/stopoffer/'.$item->id)}}"><i class="bx bx-trash me-1"></i> Arrêter</a>
                     </div>

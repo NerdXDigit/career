@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('poste');
             $table->string('entreprise');
             $table->string('niveau');
-            $table->string('logo');
+            $table->string('logo')->nullable();
             $table->string('code');
             $table->integer('actif')->default(1);
             $table->integer('valide')->default(0);

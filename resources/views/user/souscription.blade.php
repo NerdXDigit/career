@@ -8,7 +8,7 @@
     <div class="card">
       <h5 class="card-header">Mes Souscriptions</h5>
       <div class="table-responsive text-nowrap">
-        <table class="table">
+        <table class="table" id="myTable">
           <thead>
             <tr>
               <th>Titre</th>
@@ -31,6 +31,9 @@
                     @endif
                     @if ($item->valide_souscription == 1)
                         <span class="badge bg-label-success me-1">Validé</span>   
+                    @endif
+                    @if ($item->valide_souscription == 2)
+                        <span class="badge bg-label-danger me-1">Rejeté</span>   
                     @endif
                     
                 </td>

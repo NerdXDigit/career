@@ -15,7 +15,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       @endif
-        <table class="table">
+        <table class="table" id="myTable">
           <thead>
             <tr>
               <th>Nom</th>
@@ -37,7 +37,7 @@
                 <td>{{$item->titre}}</td>
                 <td>{{$item->poste}}</td>
                 <td>{{$item->entreprise}}</td>
-                <td>{{$item->date_ajout}}</td>
+                <td>{{$item->created_at}}</td>
                 <td>
                     
                     @if ($item->valide_souscription == 0)
@@ -45,6 +45,9 @@
                     @endif
                     @if ($item->valide_souscription == 1)
                         <span class="badge bg-label-success me-1">Validé</span>   
+                    @endif
+                    @if ($item->valide_souscription == 2)
+                    <span class="badge bg-label-danger me-1">Rejeté</span>      
                     @endif
                     
                 </td>
@@ -56,10 +59,14 @@
                     <div class="dropdown-menu" style="">
                         @if ($item->valide_souscription == 0)
                           <a class="dropdown-item" href="{{url('/espace/admin/validersouscription/'.$item->id)}}"><i class="bx bx-check me-1"></i> Valider</a>
+                          <a class="dropdown-item" href="{{url('/espace/admin/rejetersouscription/'.$item->id)}}"><i class="bx bx-trash me-1"></i> Rejeter</a>
                         </a>
                         @endif
                         @if ($item->valide_souscription == 1)
                             <span class="badge bg-label-success me-1">Validé</span>   
+                        @endif
+                        @if ($item->valide_souscription == 2)
+                            <span class="badge bg-label-danger me-1">Rejeté</span>   
                         @endif
                      
                         <a class="dropdown-item" href="{{url('/espace/admin/detailsouscription/'.$item->id)}}"><i class="bx bx-eye-circle me-1"></i> Voir détail</a>
