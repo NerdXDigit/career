@@ -95,7 +95,7 @@
   --color-dark-6: #311F61;
   --color-dark-7: #EAE9EF;
   --color-dark-8: #202124;
-  --color-light-1: #4F547B;
+  --color-light-1: #1dacff;
   --color-light-2: #E4E7EA;
   --color-light-3: #EEF2F6;
   --color-light-4: #F7F8FB;
@@ -1090,16 +1090,16 @@ html.-dark-mode .-dark-d-none {
 
 html.-dark-mode {
   --color-dark-1: #FFF !important;
-  --color-light-3: #2B1C55 !important;
-  --color-light-4: #2B1C55 !important;
-  --color-light-5: #2B1C55 !important;
-  --color-light-6: #2B1C55 !important;
-  --color-light-9: #2B1C55 !important;
-  --color-purple-3: #2B1C55 !important;
+  --color-light-3: #1dacff !important;
+  --color-light-4: #1dacff !important;
+  --color-light-5: #1dacff !important;
+  --color-light-6: #1dacff !important;
+  --color-light-9: #1dacff !important;
+  --color-purple-3: #1dacff !important;
 }
 
 html.-dark-mode body {
-  background-color: #140342 !important;
+  background-color: #1dacff !important;
   color: var(--color-dark-3) !important;
 }
 
@@ -1109,7 +1109,7 @@ html.-dark-mode .icon-arrow-right {
 }
 
 html.-dark-mode .header.-base-sidebar {
-  background-color: #140342 !important;
+  background-color: #1dacff !important;
 }
 
 html.-dark-mode .header.-base-sidebar .icon {
@@ -1117,7 +1117,7 @@ html.-dark-mode .header.-base-sidebar .icon {
 }
 
 html.-dark-mode .dashboard__sidebar {
-  background-color: #140342;
+  background-color: #1dacff;
 }
 
 html.-dark-mode .-dark-sidebar-white {
@@ -1125,7 +1125,7 @@ html.-dark-mode .-dark-sidebar-white {
 }
 
 html.-dark-mode .-dark-bg-dark-1 {
-  background-color: #140342 !important;
+  background-color: #1dacff !important;
 }
 
 html.-dark-mode .-dark-bg-dark-2 {
@@ -1133,7 +1133,7 @@ html.-dark-mode .-dark-bg-dark-2 {
 }
 
 html.-dark-mode .-dark-text-dark-1 {
-  color: #140342 !important;
+  color: #1dacff !important;
 }
 
 html.-dark-mode .-dark-text-white {
@@ -1165,12 +1165,12 @@ html.-dark-mode .sidebar.-base-sidebar .sidebar__item.-is-active {
 }
 
 html.-dark-mode .-dark-button-dark-1 {
-  border-color: #140342 !important;
-  background-color: #140342 !important;
+  border-color: #1dacff !important;
+  background-color: #1dacff !important;
 }
 
 html.-dark-mode .-dark-button-dark-1:hover {
-  color: #140342 !important;
+  color: #1dacff !important;
 }
 
 html.-dark-mode .form-switch .switch__slider {
@@ -1189,7 +1189,7 @@ html.-dark-mode .-dark-button-dark-2 {
 html.-dark-mode .-dark-button-white {
   border-color: white !important;
   background-color: white !important;
-  color: #140342 !important;
+  color: #1dacff !important;
 }
 
 html.-dark-mode .-dark-button-white:hover {
@@ -8015,7 +8015,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 40px;
   border-radius: 100%;
   background: white;
-  box-shadow: 0px 1px 4px 0px #14034212;
+  box-shadow: 0px 1px 4px 0px #1dacff12;
   margin: 0 5px;
   transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   opacity: 0;
@@ -10050,7 +10050,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .shadow-4 {
-  box-shadow: 0px 1px 4px 0px #14034212;
+  box-shadow: 0px 1px 4px 0px #1dacff12;
 }
 
 .shadow-5 {

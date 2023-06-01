@@ -27,7 +27,7 @@
                     <a href="{{route('opportunitiespagedetails',$offre->id)}}" class="coursesCard -type-1 ">
                         <div class="relative">
                         <div class="coursesCard__image overflow-hidden rounded-8">
-                            <img class="w-1/1" src="{{asset('offres.jpg')}}" alt="image">
+                            <img class="w-1/1" src="{{asset('offres.png')}}" alt="image">
                             <div class="coursesCard__image_overlay rounded-8"></div>
                         </div>
                         <div class="d-flex justify-between py-10 px-10 absolute-full-center z-3">
@@ -40,7 +40,7 @@
                             <div class="text-16 lh-1 fw-500 text-blue-100 ">{{$offre->titre}}</div>
                         </div>
 
-                        <div class="text-17 lh-15 fw-500 text-dark-1 mt-10">{{$offre->poste}}</div>
+                        <div class="text-17 lh-15 fw-500 mt-10 text-black">{{$offre->poste}}</div>
 
                         <div class="d-flex x-gap-10 items-center pt-10">
 
@@ -48,14 +48,14 @@
                             <div class="mr-8">
                                 <i class="fa-sharp fa-solid fa-location-dot"></i>
                             </div>
-                            <div class="text-14 lh-1">{{$offre->pays}} | {{$offre->lieu}}</div>
+                            <div class="text-14 lh-1 text-black">{{$offre->pays}} | {{$offre->lieu}}</div>
                             </div>
 
                             <div class="d-flex items-center">
                             <div class="mr-8">
                                 <img src="{{asset('img/coursesCards/icons/3.svg')}}" alt="icon">
                             </div>
-                            <div class="text-14 lh-1">{{$offre->niveau}}</div>
+                            <div class="text-14 lh-1 text-black">{{$offre->niveau}}</div>
                             </div>
 
                         </div>
@@ -69,7 +69,7 @@
                             <div class="mr-8">
                                 <img src="{{asset('img/coursesCards/icons/2.svg')}}" alt="icon">
                             </div>
-                            <h5 class="text-14 lh-1">{{$offre->deadline}}</h5>
+                            <h5 class="text-14 lh-1 text-black">{{$offre->deadline}}</h5>
                             </div>
 
                         </div>

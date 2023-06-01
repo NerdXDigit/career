@@ -118,28 +118,29 @@
                     <div class="sidebar__item -is-active">
                       <a href="{{route('homepage')}}" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                         <i class="text-20 fas fa-house mr-15"></i>
-                        Accueil
+                        <span class="text-black">Accueil</span>
+                        
                       </a>
                     </div>
 
                     <div class="sidebar__item">
                       <a href="{{route('opportunitiespage')}}" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                         <i class="text-20 fa-solid fa-compass mr-15"></i>
-                        Nos Opportunités
+                        <span class="text-black">Nos Opportunités</span>
                       </a>
                     </div>
 
                     <div class="sidebar__item ">
                       <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                         <i class="text-20 fa-solid fa-circle-play mr-15"></i>
-                        Formations
+                        <span class="text-black">Formations</span>
                       </a>
                     </div>
 
                     <div class="sidebar__item ">
                       <a href="" class="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                         <i class="text-20 fas fa-book mr-15"></i>
-                        Livres
+                        <span class="text-black">Livres</span>
                       </a>
                     </div>
 
