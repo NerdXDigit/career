@@ -153,6 +153,17 @@ class HomeControlleur extends Controller
             return redirect()->back()->withErrors($validateur)->withInput();
         }
 
+        
+        $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+
+
+        $souscription = new Souscription();
+        $souscription->user_id = auth()->user()->id;
+        $souscription->date_ajout = date('d-m-y h:i:s');
+        $souscription->offre_id = $request->input('offre_id');
+        $souscription->code = $code;
+        $souscription->save();
+
         foreach ($fichiers as $nomChamp => $fichier) {
             
             // Générer un nom de fichier unique
@@ -165,6 +176,7 @@ class HomeControlleur extends Controller
             
             $fichier_condition = new Fichier();
             $fichier_condition->user_id = auth()->user()->id;
+            $fichier_condition->souscription_id = $souscription->id;
             $fichier_condition->offre_id = $request->input('offre_id');
             $fichier_condition->fichier = $nomFichierUnique;
             $fichier_condition->save();
@@ -175,7 +187,15 @@ class HomeControlleur extends Controller
 
         $infocandidat = User::where('id', auth()->user()->id)->first();
 
+        $idoffreur = Offre::where('id', $request->input('offre_id'))->first();
+        $idoffreur = $idoffreur->user_id;
+
+        $infooffreur = User::where('id', $idoffreur)->first();
+
+
+
         $emailcandidat = $infocandidat->email;
+        $emailoffreur = $infooffreur->email;
 
         $mailinfocandidat = [
             'sujet'=> "Canditature envoyé avec succès",
@@ -183,27 +203,19 @@ class HomeControlleur extends Controller
          ];
 
          $mailinfooffreur = [
-            'sujet'=> "Canditature envoyé avec succès",
-            'message'=> "Votre candicature a été recu avec succes",
+            'sujet'=> "Vous avez un nouveau postulant",
+            'message'=> "Un utulisateur a postulé a l'un de vos offres",
          ];
 
         
 
         Mail::to($emailcandidat)->send( new PostuleMail($mailinfocandidat));
 
-        // Mail::to($emailoffreur)->send( new PostuleMailOffreur($mailinfooffreur));
+        Mail::to($emailoffreur)->send( new PostuleMailOffreur($mailinfooffreur));
 
 
 
 
-        $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
-
-
-        $souscription = new Souscription();
-        $souscription->user_id = auth()->user()->id;
-        $souscription->offre_id = $request->input('offre_id');
-        $souscription->code = $code;
-        $souscription->save();
 
 
 

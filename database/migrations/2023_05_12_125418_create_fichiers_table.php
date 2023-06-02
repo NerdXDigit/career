@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nom')->nullable();
             $table->string('fichier');
+            $table->unsignedBigInteger('souscription_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('offre_id');
+            $table->foreign('souscription_id')->references('id')->on('souscriptions')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -18,6 +18,12 @@
           <div data-i18n="Without menu">Mes Candidatures</div>
         </a>
       </li>
+      <li class="menu-item">
+        <a href="{{url('espace/client/editprofil')}}" class="menu-link">
+          <div data-i18n="Without menu">Mon profil</div>
+        </a>
+      </li>
+      
       
     </ul>
   </li>

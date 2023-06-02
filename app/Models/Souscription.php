@@ -16,4 +16,12 @@ class Souscription extends Model
         'offre_id',
         'user_id',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function fichiers() {
+        return $this->hasMany(Fichier::class);
+    }
 }

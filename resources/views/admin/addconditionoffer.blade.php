@@ -39,7 +39,7 @@
 
 
 
-              
+{{--               
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
                 <div class="col-sm-10">
@@ -48,7 +48,7 @@
                   <div style="color: #f31818 !important" class="text-muted fs-7 danger">{{$errors->first('description')}} </div> 
                   @endif
                 </div>
-              </div>
+              </div> --}}
               <div class="row justify-content-end">
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-primary">Enregistrer</button>

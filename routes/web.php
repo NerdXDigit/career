@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/espace/client', [ClientController::class, 'userDashboard'])->name('userDashboard');
     Route::get('/espace/client/souscription', [ClientController::class, 'userSouscription'])->name('userSouscription');
+    Route::get('/espace/client/editprofil', [ClientController::class, 'editprofil'])->name('editprofil');
+    Route::post('/espace/client/updateprofil', [ClientController::class, 'updateprofil']);
 
     // Offreur
     Route::get('/espace/offreur', [RecruteurControlleur::class, 'offreurDashboard'])->name('offreurDashboard');
@@ -64,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/offreur/editcondition/{id}', [RecruteurControlleur::class, 'editcondition']);
     Route::post('/espace/offreur/updatecondition', [RecruteurControlleur::class, 'updatecondition']);
     Route::get('/espace/offreur/offrepostulant/{id}', [RecruteurControlleur::class, 'offrepostulant']);
+    Route::get('/espace/offreur/editprofil', [RecruteurControlleur::class, 'editprofil'])->name('editprofil');
+    Route::post('/espace/offreur/updateprofil', [RecruteurControlleur::class, 'updateprofil']);
 
 
 
@@ -86,6 +90,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/editcondition/{id}', [AdminController::class, 'editcondition']);
     Route::post('/espace/admin/updatecondition', [AdminController::class, 'updatecondition']);
     Route::get('/espace/admin/offrepostulant/{id}', [AdminController::class, 'offrepostulant']);
+    Route::get('/espace/admin/editprofil', [AdminController::class, 'editprofil'])->name('editprofil');
+    Route::post('/espace/admin/updateprofil', [AdminController::class, 'updateprofil']);
 
     
         // admin

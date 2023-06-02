@@ -3,14 +3,22 @@
 @section('content')
 
   <section data-anim-wrap class="masthead -type-7 js-mouse-move-container">
-    <div class="masthead__bg bg-purple-1 rounded-16">
-      <img src="{{asset('img/home-9/hero/bg.png')}}" alt="image">
+    <div class="masthead__bg bg-purple-1 rounded-16 " style="height: 400px; 
+                                                              background-image:url({{asset('banner.jpg')}});
+                                                              background-position: center;
+                                                              background-repeat: no-repeat;
+                                                              background-size: cover; border-radius: 20px;" >
+      <div style=" background-color:rgb(4 56 87 / 50%) !important;width: 100%;height: 100%;border-radius: 20px;">
+        
+      </div>
+      
     </div>
 
     <div class="container py-4">
       <div class="row y-gap-20 justify-between items-center">
         <div class="col-12">
           <div class="masthead__content">
+            <br>
             <h1 data-anim-child="slide-up delay-3" class="masthead__title text-white text-center mt-3">
               +10 opportunitées disponibles
             </h1>
@@ -23,6 +31,10 @@
       </div>
     </div>
   </section>
+  <br>
+  <br>
+  <br>
+  <br>
 
   <section class="layout-pt-md layout-pb-md">
     <div data-anim-wrap class="container">

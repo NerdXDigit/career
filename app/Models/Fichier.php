@@ -13,6 +13,11 @@ class Fichier extends Model
         'nom',
         'fichier',
         'offre_id',
+        'souscription_id',
         'user_id',
     ];
+    
+    public function souscription() {
+        return $this->belongsTo(Souscription::class);
+    }
 }

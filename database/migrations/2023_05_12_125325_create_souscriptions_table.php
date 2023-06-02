@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date_ajout')->nullable();
             $table->string('code');
             $table->integer('valide_souscription')->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

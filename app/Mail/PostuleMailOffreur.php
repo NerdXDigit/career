@@ -12,13 +12,13 @@ use Illuminate\Queue\SerializesModels;
 class PostuleMailOffreur extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $data = [];
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(Array $mailinfooffreur)
     {
-        //
+        $this->data = $mailinfooffreur;
     }
 
     /**
@@ -27,7 +27,7 @@ class PostuleMailOffreur extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Postule Mail Offreur',
+            subject: 'Nouveau postulant',
         );
     }
 
@@ -37,7 +37,7 @@ class PostuleMailOffreur extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mail.postulemail',
         );
     }
 

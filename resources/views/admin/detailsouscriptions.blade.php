@@ -8,12 +8,12 @@
     <div class="card">
         <div class="card-body">
             <h4>Info</h4>
-            <p>Nom : {{$candidat->nom}}</p>
-            <p>Prénom: {{$candidat->prenoms}}</p>
-            <p>Titre : {{$candidat->titre}}</p>
-            <p>Poste : {{$candidat->poste}}</p>
-            <p>Entreprise : {{$candidat->entreprise}}</p>
-            <p>Date souscription : {{$candidat->created_at}}</p>
+            <p>Nom : {{$user->nom}}</p>
+            <p>Prénom: {{$user->prenoms}}</p>
+            <p>Titre : {{$offre->titre}}</p>
+            <p>Poste : {{$offre->poste}}</p>
+            <p>Entreprise : {{$offre->entreprise}}</p>
+            <p>Date souscription : {{$s->date_ajout}}</p>
             <h4>Document</h4>
             <table class="table">
                 <thead>
@@ -24,14 +24,17 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                  @foreach ($fichier as $item)
+                  @foreach ($fichier as $index=>$item)
                   <tr>
                       
-                      <td>{{$item->nom}}</td>
+                      <td>Fichier {{$index+1}}</td>
                       <td>
-                        <button type="button" class="btn btn-primary">
+                        <a href="{{asset('file/'.$item->fichier)}}">
+                          <button type="button" class="btn btn-primary">
                             <span class="tf-icons bx bx-download"></span>&nbsp; Télécharger
                           </button>
+                        </a>
+                        
                       </td>
                       
                      

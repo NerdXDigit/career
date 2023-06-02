@@ -23,7 +23,13 @@
     </section>
     <div class="js-pin-container">
         <section class="page-header -type-6">
-          <div class="page-header__bg bg-purple-1"></div>
+          <div class="page-header__bg bg-purple-1 bgbg" style="
+          background-image:url({{asset('banner.jpg')}});
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          padding:0 !important;
+          overflow:hidden !important;"></div>
           <div class="container">
             <div class="page-header__content">
               <div class="row y-gap-30 relative">
@@ -109,4 +115,15 @@
         </section>
 
       </div>
+      <style>
+        .bgbg::before{
+          content: '';
+          background-color:rgb(102 172 255 / 53%) !important;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      </style>
 @endsection

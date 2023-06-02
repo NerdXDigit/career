@@ -10,6 +10,10 @@ use App\Models\Souscription;
 use App\Models\Fichier;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\ResulatMail;
+
 
 class RecruteurControlleur extends Controller
 {
@@ -144,25 +148,35 @@ class RecruteurControlleur extends Controller
 
     public function useroffersouscription(Request $request) {
 
-        $candidat = DB::table('souscriptions')
-            ->join('users', 'users.id','=','souscriptions.user_id')
-            ->join('offres', 'offres.id','=','souscriptions.offre_id')
-            ->where('offres.user_id', auth()->user()->id)
-            ->get();
+        $id = auth()->user()->id;
+        $offres = User::find($id)->offres;
+        $users = User::all();
+        $souscriptions = Souscription::all();
 
-        return view('offreur.canditat')->with('candidat', $candidat);
+        // $candidat = DB::table('souscriptions')
+        //     ->join('users', 'users.id','=','souscriptions.user_id')
+        //     ->join('offres', 'offres.id','=','souscriptions.offre_id')
+        //     ->where('offres.user_id', auth()->user()->id)
+        //     ->get();
+
+        return view('offreur.canditat')->with(compact('offres','users','souscriptions'));
     }
 
     public function offrepostulant($id) {
 
-        $candidat = DB::table('souscriptions')
-            ->join('users', 'users.id','=','souscriptions.user_id')
-            ->join('offres', 'offres.id','=','souscriptions.offre_id')
-            ->where('offres.user_id', auth()->user()->id)
-            ->where('souscriptions.offre_id', $id)
-            ->get();
+        $id_user = auth()->user()->id;
+        $offres = User::find($id_user)->offres;
+        $users = User::all();
+        $souscriptions = Souscription::where('offre_id',$id)->get();
 
-        return view('offreur.offrecanditat')->with('candidat', $candidat);
+        // $candidat = DB::table('souscriptions')
+        //     ->join('users', 'users.id','=','souscriptions.user_id')
+        //     ->join('offres', 'offres.id','=','souscriptions.offre_id')
+        //     ->where('offres.user_id', auth()->user()->id)
+        //     ->where('souscriptions.offre_id', $id)
+        //     ->get();
+
+        return view('offreur.offrecanditat')->with(compact('offres','users','souscriptions'));
     }
 
     public function stopoffer($id)
@@ -181,13 +195,11 @@ class RecruteurControlleur extends Controller
     {
         $this->validate($request, [
             'nom' => 'required',
-            'description' => 'required'
         ]);
 
         $condition = new Condition();
         $condition->offre_id = $request->input('offre_id');
         $condition->nom = $request->input('nom');
-        $condition->description = $request->input('description');
         $condition->save();
 
         return redirect('/espace/offreur/listoffer')->with('status',"La condition a été enregistré avec succès");
@@ -195,18 +207,13 @@ class RecruteurControlleur extends Controller
 
     public function detailsouscription($id)
     {
-        $candidat = DB::table('souscriptions')
-                        ->join('users', 'users.id','=','souscriptions.user_id')
-                        ->join('offres', 'offres.id','=','souscriptions.offre_id')
-                        ->where('offres.user_id', auth()->user()->id)
-                        ->where('souscriptions.id', $id)
-                        ->first();
-        $id_user = $candidat->user_id;
-        $id_offre = $candidat->offre_id;
-        $fichier = Fichier::where('user_id', $id_user)
-                            ->where('offre_id', $id_offre)
-                            ->get();
-        return view('offreur.detailsouscriptions')->with('candidat', $candidat)->with('fichier', $fichier);
+        $s = Souscription::where('id',$id)->first();
+        $fichier = Souscription::find($id)->fichiers;
+        $offre = Offre::find($s->offre_id);
+        $user = User::find($s->user_id);
+
+
+        return view('offreur.detailsouscriptions')->with(compact('fichier','offre','user','s'));
     }
 
     public function validersouscription($id)
@@ -214,7 +221,22 @@ class RecruteurControlleur extends Controller
         $offre = Souscription::find($id);
         $offre->valide_souscription = 1;
         $offre->update();
+
+        $idpostulant = Souscription::where('id', $id)->first();
+        $idpostulant = $idpostulant->user_id;
+
+        $infopostulant = User::where('id', $idpostulant)->first();
+        $emailpostulant = $infopostulant->email;
+
+        $mailinfopostulant = [
+            'sujet'=> "Votre candidature a été évalulué par l'offeur",
+            'message'=> "Votre candidature a été accepté",
+        ];
+
+        Mail::to($emailpostulant)->send( new ResulatMail($mailinfopostulant));
+
         return back()->with('status',"La souscriptions a été valider avec succès");
+
     }
 
     public function rejetersouscription($id)
@@ -222,6 +244,20 @@ class RecruteurControlleur extends Controller
         $offre = Souscription::find($id);
         $offre->valide_souscription = 2;
         $offre->update();
+
+        $idpostulant = Souscription::where('id', $id)->first();
+        $idpostulant = $idpostulant->user_id;
+
+        $infopostulant = User::where('id', $idpostulant)->first();
+        $emailpostulant = $infopostulant->email;
+
+        $mailinfopostulant = [
+            'sujet'=> "Votre candidature a été évalulué par l'offeur",
+            'message'=> "Votre candidature a été rejeté",
+        ];
+
+        Mail::to($emailpostulant)->send( new ResulatMail($mailinfopostulant));
+
         return back()->with('status',"La souscriptions a été rejeté avec succès");
     }
 
@@ -253,5 +289,30 @@ class RecruteurControlleur extends Controller
         $condition->update();
 
         return redirect('/espace/offreur/listoffer')->with('status',"La condition a été mise a jour avec succès");
+    }
+
+    public function editprofil()
+    {
+        $user = User::where('id', auth()->user()->id)
+                            ->first();
+        return view('offreur.editprofil')->with('user', $user);
+    }
+
+    public function updateprofil(Request $request)
+    {
+        $this->validate($request, [
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $user = user::find(auth()->user()->id);
+        $user->nom = $request->input('nom');
+        $user->prenoms = $request->input('prenom');
+        $user->email = $request->input('email');
+        $user->telephone = $request->input('phone');
+        $user->update();
+        return back()->with('status',"Votre profil a été modifié avec succès");
     }
 }
