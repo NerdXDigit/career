@@ -111,6 +111,7 @@ Route::middleware('auth')->group(function () {
     // Export
     Route::get('/espace/admin/exportpostulant', [AdminController::class, 'exportpostulant']);
     Route::get('/espace/admin/exportoffreur', [AdminController::class, 'exportoffreur']);
+    // Route::get('/espace/admin/exportpostulantoffre', [AdminController::class, 'exportpostulantoffre']);
 
 
 

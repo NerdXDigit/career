@@ -445,6 +445,21 @@ class AdminController extends Controller
         $writer->toBrowser();
     }
 
+    // public function exportpostulantoffre()
+    // {
+    //     $candidat = DB::table('souscriptions')
+    //         ->select("nom", "prenoms", "email", "telephone", "titre", "poste")
+    //         ->join('users', 'users.id','=','souscriptions.user_id')
+    //         ->join('offres', 'offres.id','=','souscriptions.offre_id')
+    //         ->where('offres.user_id', auth()->user()->id)
+    //         ->get();
+
+    //         $file_name = "mes_postulants.csv";
+    //         $writer = SimpleExcelWriter::streamDownload($file_name);
+    //         $writer->addRows($candidat->toArray());
+    //         $writer->toBrowser();
+    // }
+
 
 
 }
