@@ -11,6 +11,8 @@ use App\Models\Fichier;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+use Spatie\SimpleExcel\SimpleExcelWriter;
+
 use Illuminate\Support\Facades\Mail;
 
 use App\Mail\ResulatMail;
@@ -419,6 +421,28 @@ class AdminController extends Controller
         $user->telephone = $request->input('phone');
         $user->update();
         return back()->with('status',"Votre profil a été modifié avec succès");
+    }
+
+    public function exportpostulant()
+    {
+        $demandeurs = User::select("nom", "prenoms", "email", "telephone")
+                        ->where('type', 0)
+                        ->get();
+        $file_name = "postulants.xlsx";
+        $writer = SimpleExcelWriter::streamDownload($file_name);
+        $writer->addRows($demandeurs->toArray());
+        $writer->toBrowser();
+    }
+    public function exportoffreur()
+    {
+        $demandeurs = User::select("nom", "prenoms", "email", "telephone")
+                    ->where('type', 1)
+                    ->OrWhere('type', 2)
+                    ->get();
+        $file_name = "offreurs.xlsx";
+        $writer = SimpleExcelWriter::streamDownload($file_name);
+        $writer->addRows($demandeurs->toArray());
+        $writer->toBrowser();
     }
 
 

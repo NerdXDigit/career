@@ -93,6 +93,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/editprofil', [AdminController::class, 'editprofil'])->name('editprofil');
     Route::post('/espace/admin/updateprofil', [AdminController::class, 'updateprofil']);
 
+
+
     
         // admin
     Route::get('/espace/admin/demandeurs', [AdminController::class, 'demandeurs']);
@@ -105,6 +107,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/activeroffre/{id}', [AdminController::class, 'activeroffre']);
     Route::get('/espace/admin/desactiveroffre/{id}', [AdminController::class, 'desactiveroffre']);
     Route::post('/espace/admin/saveoffreur', [AdminController::class, 'saveoffreur']);
+
+    // Export
+    Route::get('/espace/admin/exportpostulant', [AdminController::class, 'exportpostulant']);
+    Route::get('/espace/admin/exportoffreur', [AdminController::class, 'exportoffreur']);
+
+
 
 
 

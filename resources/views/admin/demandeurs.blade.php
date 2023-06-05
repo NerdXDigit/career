@@ -74,6 +74,7 @@
             
           </tbody>
         </table>
+        <a class="btn btn-success m-2" href="{{url('/espace/admin/exportpostulant')}}">Exporter</a>
       </div>
     </div>
     <!--/ Basic Bootstrap Table -->
@@ -81,5 +82,4 @@
  
     <!--/ Responsive Table -->
   </div>
-    
 @endsection

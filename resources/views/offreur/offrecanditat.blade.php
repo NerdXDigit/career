@@ -2,11 +2,11 @@
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Mes candidats</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Mes postulants</h4>
 
     <!-- Basic Bootstrap Table -->
     <div class="card">
-      <h5 class="card-header">Mes candidats</h5>
+      <h5 class="card-header">Mes postulants</h5>
       
       <div class="table-responsive text-nowrap">
         @if (Session::has('status'))
@@ -25,6 +25,7 @@
             <th>Entreprise</th>
             <th>Date de souscription</th>
             <th>Status</th>
+            <th>Actions</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -62,8 +63,8 @@
                             </button>
                             <div class="dropdown-menu" style="">
                                 @if ($souscription->valide_souscription == 0)
-                                  <a class="dropdown-item" href="{{url('/espace/admin/validersouscription/'.$souscription->id)}}"><i class="bx bx-check me-1"></i> Valider</a>
-                                  <a class="dropdown-item" href="{{url('/espace/admin/rejetersouscription/'.$souscription->id)}}"><i class="bx bx-trash me-1"></i> Rejeter</a>
+                                  <a class="dropdown-item" href="{{url('/espace/offreur/validersouscription/'.$souscription->id)}}"><i class="bx bx-check me-1"></i> Valider</a>
+                                  <a class="dropdown-item" href="{{url('/espace/offreur/rejetersouscription/'.$souscription->id)}}"><i class="bx bx-trash me-1"></i> Rejeter</a>
                                 </a>
                                 @endif
                                 @if ($souscription->valide_souscription == 1)
@@ -73,10 +74,12 @@
                                     <span class="badge bg-label-danger me-1">Rejeté</span>   
                                 @endif
                              
-                                <a class="dropdown-item" href="{{url('/espace/admin/detailsouscription/'.$souscription->id)}}"><i class="bx bx-eye-circle me-1"></i> Voir détail</a>
         
                             </div>
                           </div>
+                        </td>
+                        <td>
+                          <a class="btn btn-info" href="{{url('/espace/offreur/detailsouscription/'.$souscription->id)}}"><i class="bx bx-eye-circle me-1"></i> Voir détail</a>
                         </td>
                       </tr>
                       @endif

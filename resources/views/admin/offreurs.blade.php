@@ -81,6 +81,7 @@
             
           </tbody>
         </table>
+        <a class="btn btn-success m-2" href="{{url('/espace/admin/exportoffreur')}}">Exporter</a>
       </div>
     </div>
     <!--/ Basic Bootstrap Table -->
