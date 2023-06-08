@@ -64,6 +64,16 @@
               </div>
 
               <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-company">Entreprise</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="entreprise"  id="basic-default-company" placeholder="" value="{{old('entreprise')}}">
+                  @if ($errors->has('entreprise'))
+                  <div style="color: #f31818 !important" class="text-muted fs-7 danger">{{$errors->first('entreprise')}} </div> 
+                  @endif
+                </div>
+              </div>
+
+              <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-company">Password</label>
                 <div class="col-sm-10">
                   <input  autocomplete="off" type="password" class="form-control" name="password" id="basic-default-company" placeholder="" value="">

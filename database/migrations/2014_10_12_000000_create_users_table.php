@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('telephone')->unique();
             $table->integer('type')->default(0);
+            $table->string('entreprise')->nullable();
             $table->integer('valide')->default(0);
             $table->string('code');
             $table->integer('actif')->default(1);

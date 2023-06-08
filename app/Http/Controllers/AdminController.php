@@ -38,6 +38,7 @@ class AdminController extends Controller
             'logo' => 'image|max:1999',
             'description' => 'required'
         ]);
+
         if($request->file('logo')){
             $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
         
@@ -66,7 +67,7 @@ class AdminController extends Controller
             $offre->description = $request->input('description');
             $offre->save();
 
-
+            return redirect('/espace/admin/addattachment/'.$offre->id);
            
         }else{
             $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
@@ -83,11 +84,9 @@ class AdminController extends Controller
             $offre->deadline = $request->input('deadline');
             $offre->description = $request->input('description');
             $offre->save();
+
+            return redirect('/espace/admin/addattachment/'.$offre->id);
         }
-        
-
-        return back()->with('status',"L'offre a été enregistré avec succès");
-
     }
     public function listoffer(Request $request) {
         $offres = Offre::where('user_id', auth()->user()->id)
@@ -206,7 +205,7 @@ class AdminController extends Controller
         $condition->nom = $request->input('nom');
         $condition->save();
 
-        return redirect('/espace/admin/listoffer')->with('status',"La condition a été enregistré avec succès");
+        return back()->with('status',"La condition a été enregistré avec succès, vous pourvez ajouter une autre piece jointe si vous le souhaité");
     }
 
     public function detailsouscription($id)
@@ -377,6 +376,7 @@ class AdminController extends Controller
             'nom' => 'required',
             'prenoms' => 'required',
             'email' => 'required',
+            'entreprise' => 'required',
             'telephone' => 'required',
             'password' => 'required| min:6',
             'comfirmpassword' => 'required|same:password'
@@ -390,6 +390,7 @@ class AdminController extends Controller
         $user->code = $code;
         $user->type = 1;
         $user->email = $request->input('email');
+        $user->entreprise = $request->input('entreprise');
         $user->telephone = $request->input('telephone');
         $user->password = Hash::make($request->input('password'));
         $user->save();
@@ -459,6 +460,11 @@ class AdminController extends Controller
     //         $writer->addRows($candidat->toArray());
     //         $writer->toBrowser();
     // }
+
+    public function addattachment()
+    {
+        return view('admin.addattachment');
+    }
 
 
 

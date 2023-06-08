@@ -64,7 +64,7 @@ class RecruteurControlleur extends Controller
             $offre->description = $request->input('description');
             $offre->save();
 
-
+            return redirect('/espace/offreur/addattachment/'.$offre->id);
            
         }else{
             $code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
@@ -81,10 +81,10 @@ class RecruteurControlleur extends Controller
             $offre->deadline = $request->input('deadline');
             $offre->description = $request->input('description');
             $offre->save();
+
+            return redirect('/espace/offreur/addattachment/'.$offre->id);
         }
         
-
-        return back()->with('status',"L'offre a été enregistré avec succès");
 
     }
     public function listoffer(Request $request) {
@@ -307,12 +307,17 @@ class RecruteurControlleur extends Controller
             'phone' => 'required',
         ]);
 
-        $user = user::find(auth()->user()->id);
+        $user = User::find(auth()->user()->id);
         $user->nom = $request->input('nom');
         $user->prenoms = $request->input('prenom');
         $user->email = $request->input('email');
         $user->telephone = $request->input('phone');
         $user->update();
         return back()->with('status',"Votre profil a été modifié avec succès");
+    }
+
+    public function addattachment()
+    {
+        return view('offreur.addattachment');
     }
 }

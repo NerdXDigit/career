@@ -20,7 +20,7 @@
                     
                   
               @endif
-            <form action="/espace/offreur/saveoffer" method="POST" enctype="multipart/form-data">
+            <form action="/espace/admin/saveoffer" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
               <div class="row mb-3">
@@ -368,7 +368,7 @@
               </div>
               <div class="row justify-content-end">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-primary">Enregistrer</button>
+                  <button type="submit" class="btn btn-primary">Suivant</button>
                 </div>
               </div>
             </form>

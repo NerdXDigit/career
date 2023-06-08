@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/offreur/offrepostulant/{id}', [RecruteurControlleur::class, 'offrepostulant']);
     Route::get('/espace/offreur/editprofil', [RecruteurControlleur::class, 'editprofil'])->name('editprofil');
     Route::post('/espace/offreur/updateprofil', [RecruteurControlleur::class, 'updateprofil']);
+    Route::get('/espace/offreur/addattachment/{id}', [RecruteurControlleur::class, 'addattachment']);
 
 
 
@@ -92,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/espace/admin/offrepostulant/{id}', [AdminController::class, 'offrepostulant']);
     Route::get('/espace/admin/editprofil', [AdminController::class, 'editprofil'])->name('editprofil');
     Route::post('/espace/admin/updateprofil', [AdminController::class, 'updateprofil']);
+    Route::get('/espace/admin/addattachment/{id}', [AdminController::class, 'addattachment']);
 
 
 
@@ -111,6 +113,7 @@ Route::middleware('auth')->group(function () {
     // Export
     Route::get('/espace/admin/exportpostulant', [AdminController::class, 'exportpostulant']);
     Route::get('/espace/admin/exportoffreur', [AdminController::class, 'exportoffreur']);
+    
     // Route::get('/espace/admin/exportpostulantoffre', [AdminController::class, 'exportpostulantoffre']);
 
 

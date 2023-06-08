@@ -40,7 +40,7 @@ class ClientController extends Controller
             'phone' => 'required',
         ]);
 
-        $user = user::find(auth()->user()->id);
+        $user = User::find(auth()->user()->id);
         $user->nom = $request->input('nom');
         $user->prenoms = $request->input('prenom');
         $user->email = $request->input('email');
