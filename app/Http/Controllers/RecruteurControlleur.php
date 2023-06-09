@@ -202,7 +202,7 @@ class RecruteurControlleur extends Controller
         $condition->nom = $request->input('nom');
         $condition->save();
 
-        return redirect('/espace/offreur/listoffer')->with('status',"La condition a été enregistré avec succès");
+        return back()->with('status',"La condition a été enregistré avec succès, vous pourvez ajouter une autre piece jointe si vous le souhaité");
     }
 
     public function detailsouscription($id)
